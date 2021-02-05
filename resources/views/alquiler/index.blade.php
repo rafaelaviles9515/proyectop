@@ -1,6 +1,6 @@
 @extends('base.base')
 
-@section('title','Lista de Peliculas')
+@section('title','Detalle Alquiler')
 
 @section('boostrap')
 @endsection
@@ -18,7 +18,7 @@
     <div class="card">
         <div class="card-header bg-info">
             <div class="row justify-content-between">
-                    <h5 class="card-title  float-left" style="color: white">Películas registradas</h5>
+                    <h5 class="card-title  float-left" style="color: white">Detalle Alquiler</h5>
                 </div>
             </div>
         </div>
@@ -28,38 +28,38 @@
                     <thead>
                         <tr>
                             <th scope="col"></th>
-                            <th scope="col" >Titulo</th>
-                            <th scope="col" >Estreno</th>
-                            <th scope="col" >Categoria</th>
-                            <th scope="col" >Año</th>
+                            <th scope="col" >Fecha Reserva</th>
+                            <th scope="col" >Fecha Entrega</th>
+                            <th scope="col" >Monto</th>
+                            <th scope="col" >Pelicula</th>
+                            <th scope="col" >Usuario</th>
                             <th scope="col" >Estado</th>
-                            <th scope="col" width="5%">Acciones</th>  
+                            <th scope="col" width="5%">Entregar</th>  
                         </tr>
                     </thead>
                     <tbody>
                         
-                        @forelse($peliculas as $pelicula)
+                        @forelse($alquileres as $alquiler)
                         <tr>
                             <td></td>
-                            <td>{{$pelicula->titulo}}</td>
-                            @if($pelicula->estreno==1)
-                            <td><input class="form-check" class="form-check-input" type="checkbox" value="{{$pelicula->estreno}}" id="{{$pelicula->estreno}}" checked>Estreno</td>
-                            @else
-                            <td><input class="form-check" class="form-check-input" type="checkbox" value="{{$pelicula->estreno}}" id="{{$pelicula->estreno}}">Presentando</td>
-                            @endif
-                            <td>{{$pelicula->categoria_nombre}}</td>
-                            <td>{{$pelicula->ano}}</td>
-                            <td>{{$pelicula->estado_nombre}}</td>
+                            <td>{{$alquiler->fecha_reserva}}</td>
+                            <td>{{$alquiler->fecha_entrega}}</td>
+                            <td>{{$alquiler->monto}}</td>
+                            <td>{{$alquiler->pelicula_nombre}}</td>
+                            <td>{{$alquiler->usuario_nombre}}</td>
+                            <td>{{$alquiler->estado_nombre}}</td>
+                            @if($alquiler->estado_id==3)
                             <td class="text-center">
-                                <a href="{{route('pelicula.edit',$pelicula->id)}}" class="btn btn-primary btn-edit btn-sm"
-                                data-placement="bottom" title="Editar"><i class='fas fa-edit'></i></a>
-                                <a href="{{route('pelicula.eliminar',$pelicula->id)}}"class="btn btn-danger btn-delete btn-sm"
-                                data-placement="bottom" title="Eliminar"><i class='fas fa-trash'></i></a>
-                            </td>                      
+                                <a href="{{route('alquiler.entregavista',$alquiler->id)}}" class="btn btn-primary btn-edit btn-sm"
+                                data-placement="bottom" title="Entregar"><i class='fas fa-edit'></i></a>
+                            </td>
+                            @else
+                                  <td></td>
+                            @endif                      
                         </tr>
                         @empty
 							<tr>
-							  <td>No hay películas</td>
+							  <td>No detalles de alquiler</td>
 							</tr>
                         @endforelse
                     </tbody>

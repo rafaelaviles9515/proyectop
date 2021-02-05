@@ -5,7 +5,7 @@
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto my-2 my-lg-0">
-                        
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{{route('alquiler.index')}}">Detalle Alquiler</a></li>
                         @auth
                         @if(Auth::user()->rol_id==1)
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{{route('movimientopelicula.index')}}">Movimiento Peliculas</a></li>

@@ -73,7 +73,7 @@
                             <td>{{$pelicula->estado_nombre}}</td>
                             @if($pelicula->estado_id==1)
                             <td class="text-center">
-                                <a href="{{route('pago.pagovista',$pelicula->id)}}" class="btn btn-info btn-edit btn-sm"
+                                <a href="{{route('alquiler.alquilervista',$pelicula->id)}}" class="btn btn-info btn-edit btn-sm"
                                 data-placement="bottom" title="Alquilar"><i class='fa fa-camera-retro fa-lg' aria-hidden="true"></i></a>
                             </td>
                             <td class="text-center">

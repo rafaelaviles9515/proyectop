@@ -38,8 +38,15 @@ Route::get('/pelicula/delete/{pelicula}', 'PeliculaController@delete')->name('pe
 
 //pago de pelicula
 Route::get('/pagovista/{id}', 'PagoController@pagovista')->name('pago.pagovista');
-Route::get('/pago/{id}', 'PagoController@pago')->name('pago.pago');
+Route::get('/compra/pago/{id}', 'PagoController@pago')->name('pago.pago');
 
 
 //para movimiento de peliculas
 Route::get('/movimientopelicula','MovimientoPeliculaController@index')->name('movimientopelicula.index');
+
+//alquiler
+Route::get('/alquilervista/{id}', 'AlquilerController@alquilervista')->name('alquiler.alquilervista');
+Route::get('/alquiler/pago/{id}', 'AlquilerController@pago')->name('alquiler.pago');
+Route::get('/alquiler/index', 'AlquilerController@index')->name('alquiler.index');
+Route::get('/alquiler/entregavista/{id}', 'AlquilerController@entregavista')->name('alquiler.entregavista');
+Route::get('/alquiler/entrega/{id}', 'AlquilerController@entrega')->name('alquiler.entrega');

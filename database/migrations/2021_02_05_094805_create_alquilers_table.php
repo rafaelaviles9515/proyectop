@@ -17,6 +17,7 @@ class CreateAlquilersTable extends Migration
             $table->id();
             $table->date('fecha_reserva');
             $table->date('fecha_entrega');
+            $table->double('monto', 8, 2)->nullable();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->foreignId('pelicula_id')->constrained('peliculas')->onDelete('cascade');
             $table->foreignId('estado_id')->constrained('estados')->onDelete('cascade');

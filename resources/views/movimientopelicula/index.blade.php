@@ -43,6 +43,7 @@
                             <th scope="col" >Fecha final</th>
                             <th scope="col" >Pelicula</th>
                             <th scope="col" >Cliente</th> 
+                            <th scope="col" >Monto</th> 
                         </tr>
                     </thead>
                     <tbody>
@@ -55,6 +56,7 @@
                             <td>{{$movimiento->fecha_final}}</td>
                             <td>{{$movimiento->nombre_pelicula}}</td>
                             <td>{{$movimiento->nombre_cliente}}</td>
+                            <td>{{$movimiento->monto}}</td>
                         @empty
                             <tr>
                               <td>No hay movimientos</td>

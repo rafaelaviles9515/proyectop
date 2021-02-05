@@ -6,6 +6,7 @@ use App\Http\Requests\PeliculaRequest;
 use App\Models\Categoria;
 use App\Models\Estado;
 use App\Models\Pelicula;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -95,7 +96,7 @@ class PeliculaController extends Controller
         $pelicula->saldo_alquiler=$request->saldo_alquiler;
         $pelicula->categoria_id=$request->categoria_id;
         
-        //se verifica si hay cantidad de pelicula y si hay se agrega disponible al estado_id de pelicula
+        //se verifica si hay cantidad de pelicula y si hay se agrega disponible al estado_id de pelicula (1=Disponible, 2=No Disponible)
         if ($pelicula->cantidad>0) {
         	$pelicula->estado_id=1;
         }
@@ -106,33 +107,23 @@ class PeliculaController extends Controller
         $pelicula->save();
         return redirect()->route('pelicula.index')->with('status','pelicula actualizada con exito');
     }
-    public function vistaeliminar($rol)
+    public function vistaeliminar($id)
     {
 
-        if(Auth::user()->rol_id==1){
-        	$rol= Rol::findOrFail($rol);
-            return view('rol.eliminar',compact('rol'));
-        }
-        else{
-            return redirect()->route('gestion.index')->with('status','No es administrador');
-        }
+    	$pelicula= Pelicula::findOrFail($id);
+        return view('pelicula.eliminar',compact('pelicula'));
+        
     }
-    public function delete(Rol $rol)
+    public function delete(Pelicula $pelicula)
     {
 
-        if(Auth::user()->rol_id==1){
-            try {
-                
-                $rol->delete();
-                return redirect()->route('rol.index')->with('status','Rol eliminado con exito');
-            } catch (QueryException $e) {
-                return redirect()->route('rol.index')->with('status','El Rol tiene registros asociados, no puede eliminarla');
-                }
-
-        }
-        else{
-            return redirect()->route('gestion.index')->with('status','No es administrador');
-        }
+	    try {
+	        
+	        $pelicula->delete();
+	        return redirect()->route('pelicula.index')->with('status','pelicula eliminado con exito');
+	    } catch (QueryException $e) {
+	        return redirect()->route('pelicula.index')->with('status','la pelicula tiene registros asociados, no puede eliminarla');
+	        }
     }
 
 

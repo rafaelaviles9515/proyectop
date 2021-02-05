@@ -56,8 +56,8 @@
                             <td class="text-center">
                                 <a href="{{route('pelicula.edit',$pelicula->id)}}" class="btn btn-primary btn-edit btn-sm"
                                 data-placement="bottom" title="Editar"><i class='fas fa-edit'></i></a>
-                                <button type="button" class="btn btn-danger btn-delete btn-sm" data-toggle="tooltip"
-                                data-placement="bottom" title="Eliminar"><i class='fas fa-trash'></i></button>
+                                <a href="{{route('pelicula.eliminar',$pelicula->id)}}"class="btn btn-danger btn-delete btn-sm"
+                                data-placement="bottom" title="Eliminar"><i class='fas fa-trash'></i></a>
                             </td>                      
                         </tr>
                         @empty

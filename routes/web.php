@@ -28,6 +28,7 @@ Route::post('/crearregistro','UserController@store')->name('user.registro');
 
 //para pelicula
 Route::get('/pelicula', 'PeliculaController@index')->name('pelicula.index');
+Route::get('/pelicula/ver/{id}', 'PeliculaController@see')->name('pelicula.see');
 Route::get('/pelicula/crear', 'PeliculaController@create')->name('pelicula.crear');
 Route::post('/pelicula/crear', 'PeliculaController@store')->name('pelicula.store');
 Route::get('/pelicula/edit/{id}', 'PeliculaController@edit')->name('pelicula.edit');

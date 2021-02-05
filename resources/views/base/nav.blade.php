@@ -7,8 +7,8 @@
                     <ul class="navbar-nav ml-auto my-2 my-lg-0">
                         
                         @auth
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{{route('movimientopelicula.index')}}">Movimiento Peliculas</a></li>
                         @if(Auth::user()->rol_id==1)
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{{route('movimientopelicula.index')}}">Movimiento Peliculas</a></li>
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{{route('pelicula.index')}}">Administrar Películas</a></li>
                         <li class="nav-item">
                         <a class="nav-link" href="{{ route('registrar.index') }}">Registrar</a>

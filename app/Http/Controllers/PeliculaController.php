@@ -141,6 +141,20 @@ class PeliculaController extends Controller
 	        return redirect()->route('pelicula.index')->with('status','la pelicula tiene registros asociados, no puede eliminarla');
 	        }
     }
+    public function see($id)
+    {
+    	$pelicula= Pelicula::findOrFail($id);
+    	$pelicula= DB::table('peliculas')
+                            ->join('estados', 'peliculas.estado_id', '=', 'estados.id')
+                            ->join('categorias', 'peliculas.categoria_id', '=', 'categorias.id')
+                            ->select('peliculas.*', 'estados.nombre as estado_nombre','categorias.nombre as categoria_nombre')
+                            ->where([
+                                ['peliculas.id','=',$id],
+                            ])
+                            ->first();
+        return view('pelicula.see',compact('pelicula'));
+        
+    }
 
 
 }

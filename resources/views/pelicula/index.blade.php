@@ -29,9 +29,11 @@
         <div class="card-header bg-info">
             <div class="row justify-content-between">
                     <h5 class="card-title  float-left" style="color: white">Películas registradas</h5>
+                    @if(Auth::user()->rol_id==1)
                     <a href="{{route('pelicula.crear')}}" class="btn btn-success" ><i class="fas fa-plus"></i>
                         <span>Agregar
                             pelicula</span></a>
+                    @endif
                 </div>
             </div>
         </div>
@@ -49,6 +51,8 @@
                             <th scope="col" >Alquilar</th>
                             <th scope="col" >Comprar</th>
                             @if(Auth::user()->rol_id==1)
+                            <th scope="col" width="5%">Acciones</th>
+                            @else
                             <th scope="col" width="5%">Acciones</th>
                             @endif  
                         </tr>
@@ -87,6 +91,12 @@
                                 <a href="{{route('pelicula.eliminar',$pelicula->id)}}"class="btn btn-danger btn-delete btn-sm"
                                 data-placement="bottom" title="Eliminar"><i class='fas fa-trash'></i></a>
                             </td>
+                            @else
+                            <td class="text-center">
+                                <a href="{{route('pelicula.see',$pelicula->id)}}" class="btn btn-warning btn-eye btn-sm"
+                                data-placement="bottom" title="Ver"><i class='fas fa-eye'></i></a>
+                            </td>
+
                             @endif                      
                         </tr>
                         @empty

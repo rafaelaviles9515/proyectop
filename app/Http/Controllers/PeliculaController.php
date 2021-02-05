@@ -31,7 +31,7 @@ class PeliculaController extends Controller
                             ->where([
                                 ['peliculas.id','!=',0],
                             ])
-                            ->groupBy('peliculas.id')
+                            
                             ->get();
             return view('pelicula.index',compact('peliculas'));
         }
@@ -43,7 +43,7 @@ class PeliculaController extends Controller
                             ->where([
                                 ['peliculas.estado_id','=',1],
                             ])
-                            ->groupBy('peliculas.id')
+                            
                             ->get();
             return view('pelicula.index',compact('peliculas'));
         }

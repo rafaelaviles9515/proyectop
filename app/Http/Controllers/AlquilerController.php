@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\AlquilerExport;
 use App\Models\Alquiler;
 use App\Models\MovimientoPelicula;
 use App\Models\Pelicula;
@@ -10,6 +11,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Facades\Excel;
 
 class AlquilerController extends Controller
 {
@@ -156,6 +158,11 @@ class AlquilerController extends Controller
 	    return redirect()->route('alquiler.index')->with('status','Pelicula alquilada se regreso con exito');
     	 
         
+    }
+
+    public function export() 
+    {
+        return Excel::download(new AlquilerExport, 'Alquileres_de_Pelicula.xlsx');
     }
 
 

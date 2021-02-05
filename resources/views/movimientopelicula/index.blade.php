@@ -29,6 +29,8 @@
         <div class="card-header bg-info">
             <div class="row justify-content-between">
                     <h5 class="card-title  float-left" style="color: white">Movimientos de Peliculas</h5>
+                    <a href="{{route('movimientopelicula.excel')}}" class="btn btn-success" ><i class="fas fa-plus"></i>
+                    <span>Generar Excel</span></a>
                 </div>
             </div>
         </div>

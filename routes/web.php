@@ -43,7 +43,9 @@ Route::get('/compra/pago/{id}', 'PagoController@pago')->name('pago.pago');
 
 //para movimiento de peliculas
 Route::get('/movimientopelicula','MovimientoPeliculaController@index')->name('movimientopelicula.index');
-
+//excel
+Route::get('movimientopelicula/export/', 'MovimientoPeliculaController@export')->name('movimientopelicula.excel');
+Route::get('alquiler/export/', 'AlquilerController@export')->name('alquiler.excel');
 //alquiler
 Route::get('/alquilervista/{id}', 'AlquilerController@alquilervista')->name('alquiler.alquilervista');
 Route::get('/alquiler/pago/{id}', 'AlquilerController@pago')->name('alquiler.pago');

@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\MovimientoExport;
 use App\Models\MovimientoPelicula;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Facades\Excel;
 
 class MovimientoPeliculaController extends Controller
 {
@@ -28,4 +30,11 @@ class MovimientoPeliculaController extends Controller
     	return view('movimientopelicula.index',compact('movimientoPelicula'));
         
     }
+
+    public function export() 
+    {
+        return Excel::download(new MovimientoExport, 'Movimientos_de_Pelicula.xlsx');
+    }
+
+
 }

@@ -77,7 +77,7 @@ class AlquilerController extends Controller
                             ->where([
                                 ['alquilers.id','!=',0],
                             ])
-                            ->groupBy('alquilers.id')
+                            
                             ->get();
     		return view('alquiler.index',compact('alquileres'));
     	} else {
@@ -90,7 +90,7 @@ class AlquilerController extends Controller
                                 ['alquilers.user_id','=',Auth::user()->id],
                                 ['alquilers.estado_id','=',3],
                             ])
-                            ->groupBy('alquilers.id')
+                            
                             ->get();
     		return view('alquiler.index',compact('alquileres'));
     	}

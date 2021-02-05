@@ -25,7 +25,7 @@ class MovimientoPeliculaController extends Controller
                             ->where([
                                 ['movimiento_peliculas.id','!=',0],
                             ])
-                            ->groupBy('movimiento_peliculas.id')
+                            
                             ->get();
     	return view('movimientopelicula.index',compact('movimientoPelicula'));
         

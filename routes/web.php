@@ -38,4 +38,7 @@ Route::get('/pelicula/delete/{pelicula}', 'PeliculaController@delete')->name('pe
 //pago de pelicula
 Route::get('/pagovista/{id}', 'PagoController@pagovista')->name('pago.pagovista');
 Route::get('/pago/{id}', 'PagoController@pago')->name('pago.pago');
-//Route::post('/pago/{id}', 'PagoController@pago')->name('pago.pago');
+
+
+//para movimiento de peliculas
+Route::get('/movimientopelicula','MovimientoPeliculaController@index')->name('movimientopelicula.index');

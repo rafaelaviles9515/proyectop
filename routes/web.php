@@ -34,3 +34,8 @@ Route::get('/pelicula/edit/{id}', 'PeliculaController@edit')->name('pelicula.edi
 Route::post('/pelicula/edit/{id}', 'PeliculaController@update')->name('pelicula.update');
 Route::get('/pelicula/vistaeliminar/{id}', 'PeliculaController@vistaeliminar')->name('pelicula.eliminar');
 Route::get('/pelicula/delete/{pelicula}', 'PeliculaController@delete')->name('pelicula.delete');
+
+//pago de pelicula
+Route::get('/pagovista/{id}', 'PagoController@pagovista')->name('pago.pagovista');
+Route::get('/pago/{id}', 'PagoController@pago')->name('pago.pago');
+//Route::post('/pago/{id}', 'PagoController@pago')->name('pago.pago');

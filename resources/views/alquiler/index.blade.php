@@ -12,26 +12,13 @@
  <br>
  
 <div class="container-sm">
-    @if(session('status'))
-    <div class="alert alert-success" role="alert">
     @include('base.session-status')
-    </div>
-    @endif
-    @if($errors->any())
-    <div class="alert alert-danger" role="alert">
     @include('base.validation-errors')
-    </div>
-    @endif
-    
-    
  <div class="col-md-12 mx-auto my-3">
     <div class="card">
         <div class="card-header bg-info">
             <div class="row justify-content-between">
                     <h5 class="card-title  float-left" style="color: white">Películas registradas</h5>
-                    <a href="{{route('pelicula.crear')}}" class="btn btn-success" ><i class="fas fa-plus"></i>
-                        <span>Agregar
-                            pelicula</span></a>
                 </div>
             </div>
         </div>
@@ -46,11 +33,7 @@
                             <th scope="col" >Categoria</th>
                             <th scope="col" >Año</th>
                             <th scope="col" >Estado</th>
-                            <th scope="col" >Alquilar</th>
-                            <th scope="col" >Comprar</th>
-                            @if(Auth::user()->rol_id==1)
-                            <th scope="col" width="5%">Acciones</th>
-                            @endif  
+                            <th scope="col" width="5%">Acciones</th>  
                         </tr>
                     </thead>
                     <tbody>
@@ -67,27 +50,12 @@
                             <td>{{$pelicula->categoria_nombre}}</td>
                             <td>{{$pelicula->ano}}</td>
                             <td>{{$pelicula->estado_nombre}}</td>
-                            @if($pelicula->estado_id==1)
-                            <td class="text-center">
-                                <a href="{{route('pago.pagovista',$pelicula->id)}}" class="btn btn-info btn-edit btn-sm"
-                                data-placement="bottom" title="Alquilar"><i class='fa fa-camera-retro fa-lg' aria-hidden="true"></i></a>
-                            </td>
-                            <td class="text-center">
-                                <a href="{{route('pago.pagovista',$pelicula->id)}}" class="btn btn-success btn-delete btn-sm"
-                                data-placement="bottom" title="Comprar"><i class='fas fa-money-bill-alt'></i></a>
-                            </td>
-                            @else
-                            <td></td>
-                            <td></td>
-                            @endif 
-                            @if(Auth::user()->rol_id==1)
                             <td class="text-center">
                                 <a href="{{route('pelicula.edit',$pelicula->id)}}" class="btn btn-primary btn-edit btn-sm"
                                 data-placement="bottom" title="Editar"><i class='fas fa-edit'></i></a>
                                 <a href="{{route('pelicula.eliminar',$pelicula->id)}}"class="btn btn-danger btn-delete btn-sm"
                                 data-placement="bottom" title="Eliminar"><i class='fas fa-trash'></i></a>
-                            </td>
-                            @endif                      
+                            </td>                      
                         </tr>
                         @empty
 							<tr>

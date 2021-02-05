@@ -8,6 +8,7 @@ use App\Models\Estado;
 use App\Models\Pelicula;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class PeliculaController extends Controller
@@ -19,9 +20,11 @@ class PeliculaController extends Controller
 
      public function index()
     {
-    	//se uso join, para poder unir tablas que tienen llave foranea y poder traer dichas tablas y usar dicha informacion
-        //$peliculas= Pelicula::all();
-        $peliculas = DB::table('peliculas')
+
+    	if(Auth::user()->rol_id==1){
+            //se uso join, para poder unir tablas que tienen llave foranea y poder traer dichas tablas y usar dicha informacion
+        	//$peliculas= Pelicula::all();
+        	$peliculas = DB::table('peliculas')
                             ->join('estados', 'peliculas.estado_id', '=', 'estados.id')
                             ->join('categorias', 'peliculas.categoria_id', '=', 'categorias.id')
                             ->select('peliculas.*', 'estados.nombre as estado_nombre','categorias.nombre as categoria_nombre')
@@ -30,8 +33,21 @@ class PeliculaController extends Controller
                             ])
                             ->groupBy('peliculas.id')
                             ->get();
-                            
-        return view('pelicula.index',compact('peliculas'));
+            return view('pelicula.index',compact('peliculas'));
+        }
+        else{
+            $peliculas = DB::table('peliculas')
+                            ->join('estados', 'peliculas.estado_id', '=', 'estados.id')
+                            ->join('categorias', 'peliculas.categoria_id', '=', 'categorias.id')
+                            ->select('peliculas.*', 'estados.nombre as estado_nombre','categorias.nombre as categoria_nombre')
+                            ->where([
+                                ['peliculas.estado_id','=',1],
+                            ])
+                            ->groupBy('peliculas.id')
+                            ->get();
+            return view('pelicula.index',compact('peliculas'));
+        }
+    	 
     }
 
      public function create()

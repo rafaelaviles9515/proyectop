@@ -153,6 +153,9 @@ class AlquilerController extends Controller
     	if ($pelicula->cantidad<=0) {
     		$pelicula->estado_id=2;
     	}
+        else{
+            $pelicula->estado_id=1;
+        }
     	$pelicula->save();
 
 	    return redirect()->route('alquiler.index')->with('status','Pelicula alquilada se regreso con exito');

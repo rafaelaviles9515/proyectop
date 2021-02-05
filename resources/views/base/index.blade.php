@@ -15,7 +15,7 @@
                     </div>
                     <div class="col-lg-8 align-self-baseline">
                         <p class="text-white-75 font-weight-light mb-5">Podra comprar y alquilar películas.</p>
-                        <a class="btn btn-primary btn-xl js-scroll-trigger" href="{{}}">Ver películas</a>
+                        <a class="btn btn-primary btn-xl js-scroll-trigger" href="{{route('pelicula.index')}}">Ver películas</a>
                     </div>
                 </div>
             </div>

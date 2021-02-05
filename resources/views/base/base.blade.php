@@ -18,6 +18,11 @@
         <link href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="/base/css/styles.css" rel="stylesheet" />
+        
+        <!-- css para datatable-->
+        <link href="https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+
+
         @yield('boostrap')
     </head>
     <body id="page-top">
@@ -38,6 +43,10 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
         <!-- Core theme JS-->
         <script src="/base/js/scripts.js"></script>
+        <!-- datatable JS-->
+        <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap4.min.js"></script>
+
         @yield('finalboostrap')
     </body>
 </html>

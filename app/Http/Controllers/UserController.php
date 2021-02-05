@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserRequest;
 use App\Models\Rol;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -14,6 +17,7 @@ class UserController extends Controller
      */
     public function index()
     {
+        //envio todos los roles que estan eb la base de datos
         $roles= Rol::all();
         return view('auth.register',compact('roles'));
     }
@@ -34,9 +38,19 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
-        //
+        //valido y creo un usuario
+        $user=new User;
+        $user->name=$request->name;
+        $user->email=$request->email;
+        $user->password=Hash::make($request->password);
+        $user->rol_id=$request->rol_id;
+        $user->saldo=$request->monto;
+        $user->save();
+        //User::create($request->validated());
+        
+        return redirect()->route('index')->with('status','el usuario fue creado con exito');
     }
 
     /**

@@ -13,12 +13,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//vista para un index
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('base.index');
+})->name('index');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+//rutas para crear usuario
 Route::get('/registar','UserController@index')->name('registrar.index');
+Route::post('/crearregistro','UserController@store')->name('user.registro');

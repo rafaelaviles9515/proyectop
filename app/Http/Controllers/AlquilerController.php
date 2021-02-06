@@ -77,7 +77,7 @@ class AlquilerController extends Controller
                             ->where([
                                 ['alquilers.id','!=',0],
                             ])
-                            ->groupBy('alquilers.id')
+                            
                             ->get();
     		return view('alquiler.index',compact('alquileres'));
     	} else {
@@ -90,7 +90,7 @@ class AlquilerController extends Controller
                                 ['alquilers.user_id','=',Auth::user()->id],
                                 ['alquilers.estado_id','=',3],
                             ])
-                            ->groupBy('alquilers.id')
+                            
                             ->get();
     		return view('alquiler.index',compact('alquileres'));
     	}
@@ -153,6 +153,9 @@ class AlquilerController extends Controller
     	if ($pelicula->cantidad<=0) {
     		$pelicula->estado_id=2;
     	}
+        else{
+            $pelicula->estado_id=1;
+        }
     	$pelicula->save();
 
 	    return redirect()->route('alquiler.index')->with('status','Pelicula alquilada se regreso con exito');

@@ -23,7 +23,7 @@ class PagoController extends Controller
     	$pelicula= Pelicula::findOrFail($id);
 
     	if ($pelicula->cantidad >0) {
-    		return view('Pago.pago',compact('pelicula'));
+    		return view('pago.pago',compact('pelicula'));
     	} else {
     		return redirect()->route('pelicula.index')->with('status','se acabo cupo para esa pelicula');
     	}
